@@ -1,0 +1,37 @@
+.main {
+    padding: 0 20px;
+}
+
+.message {
+    padding: 20px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 0px auto;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    font-size: 30px;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    user-select: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
