@@ -1,3 +1,20 @@
+let isVersusAI = false;
+const getVersus = () => {
+    isVersusAI = true;
+    getPlayground();
+    return isVersusAI;
+};
+const getPlayground = () => {
+    mainDOM.classList.remove("hidden");
+    pveDOM.classList.add("hidden");
+    pvpDOM.classList.add("hidden");
+};
+const pveDOM = document.querySelector("#pve");
+const pvpDOM = document.querySelector("#pvp");
+const mainDOM = document.querySelector("#main");
+pveDOM.addEventListener("click", getVersus);
+pvpDOM.addEventListener("click", getPlayground);
+
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
     const setField = (index, sign) => {
@@ -11,7 +28,12 @@ const Gameboard = (() => {
             board[index] = "";
         }
     };
-    return { setField, getField, reset };
+    const randomIndex = () => {
+        let randomNum = Math.floor(Math.random()*board.length);
+        if (board[randomNum] !== "") return randomIndex();
+        return randomNum
+    };
+    return { setField, getField, randomIndex, reset };
 })();
 
 const Player = (sign) => {
@@ -34,6 +56,9 @@ const Display = (() => {
     squareDOM.forEach((square) => square.addEventListener("click", (event) => {
         if (Controller.getIsGame() || event.target.textContent !== "") return;
         Controller.playRound(parseInt(event.target.dataset.index));
+        if (isVersusAI && !(Controller.getIsGame())) {
+            playRoundForAI();
+        };
         renderGameboard();
     }));
     restartBtnDOM.addEventListener("click", () => {
@@ -52,6 +77,9 @@ const Display = (() => {
     const setMessageDOM = (message) => {
         messageDOM.textContent = message;
     };
+    const playRoundForAI = () => {
+        Controller.playRound(Gameboard.randomIndex());
+    }
     return { setResult, setMessageDOM };
 })();
 

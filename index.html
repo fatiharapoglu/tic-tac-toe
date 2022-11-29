@@ -9,7 +9,11 @@
     <script src="script/script.js" defer></script>
 </head>
 <body>
-    <main class="main">
+    <div class="center">
+        <button class="btn" id="pvp">PvP</button>
+        <button class="btn" id="pve">PvE</button>
+    </div>
+    <main id="main" class="main hidden">
         <div class="message" id="message">Player X's turn</div>
         <div class="gameboard">
             <div class="square" data-index="0"></div>
@@ -23,7 +27,7 @@
             <div class="square" data-index="8"></div>
         </div>
         <div class="center">
-            <button class="restart" id="restart">Restart</button>
+            <button class="restart btn" id="restart">Restart</button>
         </div>
     </main>
 </body>
