@@ -1,3 +1,4 @@
+// first options that decide versus human or AI
 let isVersusAI = false;
 const getVersus = () => {
     isVersusAI = true;
@@ -15,6 +16,8 @@ const notepadDOM = document.querySelector(".notepad");
 pveDOM.addEventListener("click", getVersus);
 pvpDOM.addEventListener("click", getPlayground);
 
+
+// Gameboard module -> board related options and functions
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
     const setField = (index, sign) => {
@@ -36,6 +39,8 @@ const Gameboard = (() => {
     return { setField, getField, randomIndex, reset };
 })();
 
+
+// Player module that basicly gets which sign will apply per round
 const Player = (sign) => {
     this.sign = sign;
     const getSign = () => {
@@ -44,6 +49,8 @@ const Player = (sign) => {
     return {getSign};
 };
 
+
+// Display module -> DOM manipulations and options
 const Display = (() => {
     const squareDOM = document.querySelectorAll(".square");
     const messageDOM = document.querySelector("#message");
@@ -52,7 +59,7 @@ const Display = (() => {
         for (let index = 0; index < squareDOM.length; index++) {
             squareDOM[index].textContent = Gameboard.getField(index);
             if (squareDOM[index].textContent !== "") {
-                squareDOM[index].classList.add("puff-in-center");
+                squareDOM[index].classList.add("puff-in-center"); // adds animation classes after click event
             }
         }
     };
@@ -60,7 +67,7 @@ const Display = (() => {
         if (Controller.getIsGame() || event.target.textContent !== "") return;
         Controller.playRound(parseInt(event.target.dataset.index));
         if (isVersusAI && !(Controller.getIsGame())) {
-            setTimeout(playRoundForAI, 150);
+            setTimeout(playRoundForAI, 150); // setTimeout function for basic sleep time
         };
         renderGameboard();
     }));
@@ -87,12 +94,14 @@ const Display = (() => {
     };
     const resetClassList = () => {
         for (let index = 0; index < squareDOM.length; index++) {
-            squareDOM[index].classList.remove("puff-in-center");
+            squareDOM[index].classList.remove("puff-in-center"); // removes animation classes
         }
     };
     return { setResult, setMessageDOM };
 })();
 
+
+// Game Controller module -> game control and related options
 const Controller = (() => {
     const playerX = Player("X");
     const playerO = Player("O");
