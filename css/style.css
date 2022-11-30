@@ -79,6 +79,41 @@ body {
     cursor: pointer;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: #5C6274;
+}
+
+footer .about {
+    display: flex;
+    align-items: center;
+}
+
+.githubIcon {
+    width: 25px; 
+    height: 25px; 
+    padding-left: 10px; 
+    padding-right: 10px;
+    transition: transform 1s ease-in-out;
+}
+
+.githubIcon:hover {
+    transform: rotate(360deg);
+}
+
+.about a {
+    color: rgb(6, 0, 65);
+    text-decoration: none;
+}
+
+.about a:hover {
+    text-decoration: underline;
+}
+
 /* responsive css options start */
 @media only screen and (max-width: 1200px) {
     .handwrite {
@@ -119,6 +154,13 @@ body {
     }
     .message {
         font-size: 12px;
+    }
+    .footer, .about {
+        font-size: 8px;
+    }
+    .githubIcon {
+        width: 10px; 
+        height: 10px; 
     }
 }
 /* responsive css options end */
