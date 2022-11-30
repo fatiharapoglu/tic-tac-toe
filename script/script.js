@@ -51,19 +51,23 @@ const Display = (() => {
     const renderGameboard = () => {
         for (let index = 0; index < squareDOM.length; index++) {
             squareDOM[index].textContent = Gameboard.getField(index);
+            if (squareDOM[index].textContent !== "") {
+                squareDOM[index].classList.add("puff-in-center")
+            }
         }
     };
     squareDOM.forEach((square) => square.addEventListener("click", (event) => {
         if (Controller.getIsGame() || event.target.textContent !== "") return;
         Controller.playRound(parseInt(event.target.dataset.index));
         if (isVersusAI && !(Controller.getIsGame())) {
-            playRoundForAI();
+            setTimeout(playRoundForAI, 150);
         };
         renderGameboard();
     }));
     restartBtnDOM.addEventListener("click", () => {
         Gameboard.reset();
         Controller.reset();
+        resetClassList();
         renderGameboard();
         setMessageDOM("Player X's turn");
     });
@@ -79,7 +83,13 @@ const Display = (() => {
     };
     const playRoundForAI = () => {
         Controller.playRound(Gameboard.randomIndex());
-    }
+        renderGameboard();
+    };
+    const resetClassList = () => {
+        for (let index = 0; index < squareDOM.length; index++) {
+            squareDOM[index].classList.remove("puff-in-center");
+        }
+    };
     return { setResult, setMessageDOM };
 })();
 
@@ -111,14 +121,12 @@ const Controller = (() => {
             return;
         }
         round++;
-        Display.setMessageDOM(
-            `Player ${getCurrentPlayerSign()}'s turn`
-        );
+        Display.setMessageDOM(`Player ${getCurrentPlayerSign()}'s turn`);
     };
     const checkGame = (index) => {
         const winConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-        return winConditions.filter((combination) => combination.includes(index)).some((possibleCombination) =>
-            possibleCombination.every((index) => Gameboard.getField(index) === getCurrentPlayerSign()
+        return winConditions.filter((combination) => combination.includes(index)).some((possible) =>
+            possible.every((index) => Gameboard.getField(index) === getCurrentPlayerSign()
         ));
     };
     return { playRound, getIsGame, reset };
