@@ -21,7 +21,7 @@ body {
     padding: 20px 0;
     font-size: 20px;
     text-align: center;
-    color: rgb(6, 0, 65);
+    color: rgb(4, 0, 41);
 }
 
 .gameboard {
@@ -68,7 +68,7 @@ body {
 
 .handwrite {
     background: none;
-    color: rgb(6, 0, 65);
+    color: rgb(4, 0, 41);
     font-family: 'Indie Flower', cursive;
     font-size: 18px;
     border: none;
@@ -106,7 +106,7 @@ footer .about {
 }
 
 .about a {
-    color: rgb(6, 0, 65);
+    color: rgb(4, 0, 41);
     text-decoration: none;
 }
 
