@@ -79,6 +79,7 @@ body {
     cursor: pointer;
 }
 
+/* responsive css options start */
 @media only screen and (max-width: 1200px) {
     .handwrite {
         font-size: 12px;
@@ -120,6 +121,7 @@ body {
         font-size: 12px;
     }
 }
+/* responsive css options end */
 
 /* x and o css animation start */
 .puff-in-center {
