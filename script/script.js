@@ -6,12 +6,12 @@ const getVersus = () => {
 };
 const getPlayground = () => {
     mainDOM.classList.remove("hidden");
-    pveDOM.classList.add("hidden");
-    pvpDOM.classList.add("hidden");
+    notepadDOM.classList.add("hidden");
 };
 const pveDOM = document.querySelector("#pve");
 const pvpDOM = document.querySelector("#pvp");
 const mainDOM = document.querySelector("#main");
+const notepadDOM = document.querySelector(".notepad");
 pveDOM.addEventListener("click", getVersus);
 pvpDOM.addEventListener("click", getPlayground);
 
@@ -52,7 +52,7 @@ const Display = (() => {
         for (let index = 0; index < squareDOM.length; index++) {
             squareDOM[index].textContent = Gameboard.getField(index);
             if (squareDOM[index].textContent !== "") {
-                squareDOM[index].classList.add("puff-in-center")
+                squareDOM[index].classList.add("puff-in-center");
             }
         }
     };
