@@ -1,4 +1,4 @@
-// first options that decide versus human or AI
+// first options that decide versus human or computer
 let isVersusAI = false;
 const getVersus = () => {
     isVersusAI = true;
@@ -84,7 +84,7 @@ const Display = (() => {
         }
         else if (winner === "Draw") {
             setMessageDOM("A draw! how rare...");
-        } 
+        }
         else {
             setMessageDOM(`Player ${winner} has won!`);
         }
@@ -152,11 +152,8 @@ const Controller = (() => {
     const checkGame = (index) => {
         const winConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
         return winConditions
-            .filter(combination => combination
-            .includes(index))
-            .some(possible => possible
-            .every(index => Gameboard.getField(index) === getCurrentPlayerSign()
-        ));
+            .filter(combination => combination.includes(index))
+            .some(possible => possible.every(index => Gameboard.getField(index) === getCurrentPlayerSign()))
     };
     return { playRound, getIsGame, reset };
 })();
