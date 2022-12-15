@@ -31,6 +31,7 @@ body {
     height: 300px;
     margin: 0px auto;
     grid-gap: 1px;
+    cursor: progress;
 }
 
 .square {
@@ -93,7 +94,7 @@ footer .about {
     align-items: center;
 }
 
-.githubIcon {
+.github-icon {
     width: 25px; 
     height: 25px; 
     padding-left: 10px; 
@@ -101,7 +102,7 @@ footer .about {
     transition: transform 1s ease-in-out;
 }
 
-.githubIcon:hover {
+.github-icon:hover {
     transform: rotate(360deg);
 }
 
@@ -112,6 +113,10 @@ footer .about {
 
 .about a:hover {
     text-decoration: underline;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 /* responsive css options start */
@@ -165,7 +170,7 @@ footer .about {
 }
 /* responsive css options end */
 
-/* x and o css animation start */
+/* x and o css animations */
 .puff-in-center {
     -webkit-animation: puff-in-center 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950) both;
     animation: puff-in-center 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950) both;
@@ -206,4 +211,3 @@ footer .about {
         opacity: 1;
     }
 }
-/* x and o css animation end */

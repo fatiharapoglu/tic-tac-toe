@@ -32,7 +32,7 @@ const Gameboard = (() => {
         }
     };
     const randomIndex = () => {
-        let randomNum = Math.floor(Math.random()*board.length);
+        let randomNum = Math.floor(Math.random() * board.length);
         if (board[randomNum] !== "") return randomIndex();
         return randomNum
     };
@@ -67,7 +67,7 @@ const Display = (() => {
         if (Controller.getIsGame() || event.target.textContent !== "") return;
         Controller.playRound(parseInt(event.target.dataset.index));
         if (isVersusAI && !(Controller.getIsGame())) {
-            setTimeout(playRoundForAI, 150); // setTimeout function for basic sleep time
+            waitAndLetAiPlay();
         };
         renderGameboard();
     }));
@@ -79,9 +79,13 @@ const Display = (() => {
         setMessageDOM("Player X's turn");
     });
     const setResult = (winner) => {
-        if (winner === "Draw") {
-            setMessageDOM("A draw!");
-        } else {
+        if (winner === "O" && isVersusAI) {
+            setMessageDOM("Computer won? How could that be?")
+        }
+        else if (winner === "Draw") {
+            setMessageDOM("A draw! how rare...");
+        } 
+        else {
             setMessageDOM(`Player ${winner} has won!`);
         }
     };
@@ -92,6 +96,19 @@ const Display = (() => {
         Controller.playRound(Gameboard.randomIndex());
         renderGameboard();
     };
+    const waitAndLetAiPlay = async () => { // replaced async function for waiting the ai to play
+        setMessageDOM("Computer's turn");
+        squareDOM.forEach(square => {
+            square.classList.add("disabled"); // disabled class adds pointer-events:none
+        });
+        await new Promise(resolve => { // waiting to resolve while computer plays
+            setTimeout(playRoundForAI, 500);
+            setTimeout(resolve, 500);
+        });
+        squareDOM.forEach(square => {
+            square.classList.remove("disabled"); // so the player can't interact with the squares until promise resolved
+        });
+    }
     const resetClassList = () => {
         for (let index = 0; index < squareDOM.length; index++) {
             squareDOM[index].classList.remove("puff-in-center"); // removes animation classes
@@ -134,8 +151,11 @@ const Controller = (() => {
     };
     const checkGame = (index) => {
         const winConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-        return winConditions.filter((combination) => combination.includes(index)).some((possible) =>
-            possible.every((index) => Gameboard.getField(index) === getCurrentPlayerSign()
+        return winConditions
+            .filter(combination => combination
+            .includes(index))
+            .some(possible => possible
+            .every(index => Gameboard.getField(index) === getCurrentPlayerSign()
         ));
     };
     return { playRound, getIsGame, reset };
