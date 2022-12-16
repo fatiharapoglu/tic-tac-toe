@@ -16,7 +16,6 @@ const notepadDOM = document.querySelector(".notepad");
 pveDOM.addEventListener("click", getVersus);
 pvpDOM.addEventListener("click", getPlayground);
 
-
 // Gameboard module -> board related options and functions
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
@@ -39,16 +38,14 @@ const Gameboard = (() => {
     return { setField, getField, randomIndex, reset };
 })();
 
-
 // Player module that basicly gets which sign will apply per round
 const Player = (sign) => {
     this.sign = sign;
     const getSign = () => {
         return sign;
     };
-    return {getSign};
+    return { getSign };
 };
-
 
 // Display module -> DOM manipulations and options
 const Display = (() => {
@@ -81,11 +78,9 @@ const Display = (() => {
     const setResult = (winner) => {
         if (winner === "O" && isVersusAI) {
             setMessageDOM("Computer won? How could that be?")
-        }
-        else if (winner === "Draw") {
+        } else if (winner === "Draw") {
             setMessageDOM("A draw! how rare...");
-        }
-        else {
+        } else {
             setMessageDOM(`Player ${winner} has won!`);
         }
     };
@@ -152,8 +147,10 @@ const Controller = (() => {
     const checkGame = (index) => {
         const winConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
         return winConditions
-            .filter(combination => combination.includes(index))
-            .some(possible => possible.every(index => Gameboard.getField(index) === getCurrentPlayerSign()))
+            .filter(combination => combination
+            .includes(index))
+            .some(possible => possible
+            .every(index => Gameboard.getField(index) === getCurrentPlayerSign()))
     };
     return { playRound, getIsGame, reset };
 })();
