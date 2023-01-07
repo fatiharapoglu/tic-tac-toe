@@ -31,7 +31,7 @@ body {
     height: 300px;
     margin: 0px auto;
     grid-gap: 1px;
-    cursor: progress;
+    cursor: not-allowed;
 }
 
 .square {
