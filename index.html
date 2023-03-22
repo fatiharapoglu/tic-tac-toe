@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Fettan | ticTacToe</title>
-    <link rel="shortcut icon" href="assets/x.svg" type="image/x-icon">
-    <script src="script/script.js" defer></script>
-</head>
-<body>
-    <div class="notepad center">
-        <button class="handwrite" id="pve">play versus computer</button>
-        <button class="handwrite" id="pvp">play versus human</button>
-    </div>
-    <main id="main" class="main hidden">
-        <div class="message" id="message">Player X's turn</div>
-        <div class="gameboard">
-            <div class="square" data-index="0"></div>
-            <div class="square" data-index="1"></div>
-            <div class="square" data-index="2"></div>
-            <div class="square" data-index="3"></div>
-            <div class="square" data-index="4"></div>
-            <div class="square" data-index="5"></div>
-            <div class="square" data-index="6"></div>
-            <div class="square" data-index="7"></div>
-            <div class="square" data-index="8"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Fettan | ticTacToe</title>
+        <link rel="shortcut icon" href="assets/x.svg" type="image/x-icon" />
+        <script src="script/script.js" defer></script>
+    </head>
+    <body>
+        <div class="notepad center">
+            <button class="handwrite" id="pve">play versus computer</button>
+            <button class="handwrite" id="pvp">play versus human</button>
         </div>
-        <div class="center">
-            <button class="handwrite" id="restart">restart</button>
-        </div>
-    </main>
-    <footer>
-        <div class="about">
-            <span>
-                <a href="https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe" id="odin">The Odin Project</a> | fatiharapoglu
-            </span>
-            <a href="https://github.com/fatiharapoglu">
-                <img class="github-icon" src="assets/GitHub-Mark-120px-plus.png" alt="github-logo">
-            </a>
-        </div>
-    </footer>
-</body>
+        <main id="main" class="main hidden">
+            <div class="message" id="message">Player X's turn</div>
+            <div class="gameboard">
+                <div class="square" data-index="0"></div>
+                <div class="square" data-index="1"></div>
+                <div class="square" data-index="2"></div>
+                <div class="square" data-index="3"></div>
+                <div class="square" data-index="4"></div>
+                <div class="square" data-index="5"></div>
+                <div class="square" data-index="6"></div>
+                <div class="square" data-index="7"></div>
+                <div class="square" data-index="8"></div>
+            </div>
+            <div class="center">
+                <button class="handwrite" id="restart">restart</button>
+            </div>
+        </main>
+        <footer>
+            <div class="about">
+                <span>
+                    <a href="https://www.theodinproject.com/" id="odin">The Odin Project</a>
+                    | fatiharapoglu
+                </span>
+                <a href="https://github.com/fatiharapoglu">
+                    <img
+                        class="github-icon"
+                        src="assets/GitHub-Mark-120px-plus.png"
+                        alt="github-logo"
+                    />
+                </a>
+            </div>
+        </footer>
+    </body>
 </html>

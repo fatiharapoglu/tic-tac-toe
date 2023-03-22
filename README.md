@@ -1,9 +1,20 @@
-# Tic - Tac - Toe
+# Tic Tac Toe
 
-[The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe)'s node path javascript tic-tac-toe project.
+Created with **HTML**, **CSS** and **JavaScript**.
 
-Created with HTML, CSS and JS.
+⮕ [Live preview](https://fatiharapoglu.github.io/tic-tac-toe/)
 
-[Click for live preview](https://fatiharapoglu.github.io/ticTacToe)
+## Features
 
-![RPS](assets/readme.png)
+-   Single player mode (versus AI)
+-   Two player mode
+-   Responsive design
+
+## Roadmap
+
+-   Add difficulty options
+-   Add Unbeatable AI mode
+
+## How It Looks
+
+![ss](./assets/readme.png)

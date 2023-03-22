@@ -33,7 +33,7 @@ const Gameboard = (() => {
     const randomIndex = () => {
         let randomNum = Math.floor(Math.random() * board.length);
         if (board[randomNum] !== "") return randomIndex();
-        return randomNum
+        return randomNum;
     };
     return { setField, getField, randomIndex, reset };
 })();
@@ -60,14 +60,16 @@ const Display = (() => {
             }
         }
     };
-    squareDOM.forEach((square) => square.addEventListener("click", (event) => {
-        if (Controller.getIsGame() || event.target.textContent !== "") return;
-        Controller.playRound(parseInt(event.target.dataset.index));
-        if (isVersusAI && !(Controller.getIsGame())) {
-            waitAndLetAiPlay();
-        };
-        renderGameboard();
-    }));
+    squareDOM.forEach((square) =>
+        square.addEventListener("click", (event) => {
+            if (Controller.getIsGame() || event.target.textContent !== "") return;
+            Controller.playRound(parseInt(event.target.dataset.index));
+            if (isVersusAI && !Controller.getIsGame()) {
+                waitAndLetAiPlay();
+            }
+            renderGameboard();
+        })
+    );
     restartBtnDOM.addEventListener("click", () => {
         Gameboard.reset();
         Controller.reset();
@@ -77,7 +79,7 @@ const Display = (() => {
     });
     const setResult = (winner) => {
         if (winner === "O" && isVersusAI) {
-            setMessageDOM("Computer won? How could that be?")
+            setMessageDOM("Computer won? How could that be?");
         } else if (winner === "Draw") {
             setMessageDOM("A draw! how rare...");
         } else {
@@ -91,19 +93,21 @@ const Display = (() => {
         Controller.playRound(Gameboard.randomIndex());
         renderGameboard();
     };
-    const waitAndLetAiPlay = async () => { // replaced async function for waiting the ai to play
+    const waitAndLetAiPlay = async () => {
+        // replaced async function for waiting the ai to play
         setMessageDOM("Computer's turn");
-        squareDOM.forEach(square => {
+        squareDOM.forEach((square) => {
             square.classList.add("disabled"); // disabled class adds pointer-events:none
         });
-        await new Promise(resolve => { // waiting to resolve while computer plays
+        await new Promise((resolve) => {
+            // waiting to resolve while computer plays
             setTimeout(playRoundForAI, 500);
             setTimeout(resolve, 500);
         });
-        squareDOM.forEach(square => {
+        squareDOM.forEach((square) => {
             square.classList.remove("disabled"); // so the player can't interact with the squares until promise resolved
         });
-    }
+    };
     const resetClassList = () => {
         for (let index = 0; index < squareDOM.length; index++) {
             squareDOM[index].classList.remove("puff-in-center"); // removes animation classes
@@ -111,7 +115,6 @@ const Display = (() => {
     };
     return { setResult, setMessageDOM };
 })();
-
 
 // Game Controller module -> game control and related options
 const Controller = (() => {
@@ -145,12 +148,21 @@ const Controller = (() => {
         Display.setMessageDOM(`Player ${getCurrentPlayerSign()}'s turn`);
     };
     const checkGame = (index) => {
-        const winConditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+        const winConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
         return winConditions
-            .filter(combination => combination
-            .includes(index))
-            .some(possible => possible
-            .every(index => Gameboard.getField(index) === getCurrentPlayerSign()))
+            .filter((combination) => combination.includes(index))
+            .some((possible) =>
+                possible.every((index) => Gameboard.getField(index) === getCurrentPlayerSign())
+            );
     };
     return { playRound, getIsGame, reset };
 })();

@@ -11,9 +11,9 @@ body {
     background-image: url(../assets/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     height: 100vh;
-    font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
     background-color: #b19a7b;
 }
 
@@ -44,7 +44,7 @@ body {
     width: 100px;
     height: 100px;
     user-select: none;
-    color: #5C6274;
+    color: #5c6274;
 }
 
 .center {
@@ -70,7 +70,7 @@ body {
 .handwrite {
     background: none;
     color: rgb(4, 0, 41);
-    font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
     font-size: 18px;
     border: none;
 }
@@ -86,7 +86,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    color: #5C6274;
+    color: #5c6274;
 }
 
 footer .about {
@@ -95,11 +95,11 @@ footer .about {
 }
 
 .github-icon {
-    width: 25px; 
-    height: 25px; 
-    padding-left: 10px; 
+    width: 25px;
+    height: 25px;
+    padding-left: 10px;
     padding-right: 10px;
-    transition: transform 1s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 .github-icon:hover {
@@ -160,20 +160,21 @@ footer .about {
     .message {
         font-size: 12px;
     }
-    .footer, .about {
+    .footer,
+    .about {
         font-size: 8px;
     }
     .githubIcon {
-        width: 10px; 
-        height: 10px; 
+        width: 10px;
+        height: 10px;
     }
 }
 /* responsive css options end */
 
 /* x and o css animations */
 .puff-in-center {
-    -webkit-animation: puff-in-center 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950) both;
-    animation: puff-in-center 300ms cubic-bezier(0.445, 0.050, 0.550, 0.950) both;
+    -webkit-animation: puff-in-center 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
+    animation: puff-in-center 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
 }
 
 @-webkit-keyframes puff-in-center {
